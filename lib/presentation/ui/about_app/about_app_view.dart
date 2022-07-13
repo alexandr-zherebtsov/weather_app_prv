@@ -12,7 +12,7 @@ class AboutAppView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseView<AboutAsViewModel>(
-      init: (vm) => vm.onInit(),
+      init: (AboutAsViewModel vm) => vm.init(),
       builder: (BuildContext context, AboutAsViewModel vm, Widget? child) {
         return Scaffold(
           appBar: AppBar(
@@ -28,15 +28,15 @@ class AboutAppView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 30.0),
+                      padding: const EdgeInsets.only(bottom: 30),
                       child: Text(
                         StringsKeys.appName,
                         style: Theme.of(context).textTheme.headline2,
                       ),
                     ),
-                    appIcon(size: 200),
+                    const AppIcon(size: 200),
                     Padding(
-                      padding: const EdgeInsets.only(top: 60.0, bottom: 6.0),
+                      padding: const EdgeInsets.only(top: 60, bottom: 6),
                       child: Text(
                         StringsKeys.createdBy.tr(),
                         style: Theme.of(context).textTheme.bodyText1,
@@ -47,19 +47,20 @@ class AboutAppView extends StatelessWidget {
                       focusColor: AppColors.transparent,
                       splashColor: AppColors.transparent,
                       highlightColor: AppColors.transparent,
+                      onTap: vm.gitHubLaunch,
                       child: Text(
                         StringsKeys.authorName.tr(),
                         style: Theme.of(context).textTheme.headline4,
                       ),
-                      onTap: vm.gitHubLaunch,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 8.0, bottom: 30.0),
+                      padding: const EdgeInsets.only(top: 8, bottom: 30),
                       child: InkWell(
                         hoverColor: AppColors.transparent,
                         focusColor: AppColors.transparent,
                         splashColor: AppColors.transparent,
                         highlightColor: AppColors.transparent,
+                        onTap: vm.flutterLaunch,
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
@@ -68,16 +69,15 @@ class AboutAppView extends StatelessWidget {
                               style: Theme.of(context).textTheme.bodyText1,
                             ),
                             const Padding(
-                              padding: EdgeInsets.only(left: 8.0),
+                              padding: EdgeInsets.only(left: 8),
                               child: FlutterLogo(size: 24),
                             ),
                           ],
                         ),
-                        onTap: vm.flutterLaunch,
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 30.0),
+                      padding: const EdgeInsets.only(top: 30),
                       child: Text(
                         vm.version,
                         style: Theme.of(context).textTheme.bodyText1,

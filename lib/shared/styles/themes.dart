@@ -6,14 +6,7 @@ import 'package:weather_app_prv/shared/styles/colors.dart';
 import 'package:weather_app_prv/shared/styles/styles.dart';
 
 class AppThemes {
-  static ThemeData getTheme() {
-    switch (window.platformBrightness) {
-      case Brightness.dark:
-        return dark;
-      default:
-        return light;
-    }
-  }
+  static ThemeData getTheme() => window.platformBrightness == Brightness.dark ? dark : light;
 
   static final ThemeData light = ThemeData(
     useMaterial3: true,
@@ -23,7 +16,6 @@ class AppThemes {
     cardColor: AppColors.lightGray_1,
     dividerColor: AppColors.lightGray_2,
     scaffoldBackgroundColor: AppColors.white,
-    androidOverscrollIndicator: AndroidOverscrollIndicator.stretch,
     textTheme: const TextTheme(
       headline1: TextStyle(
         color: AppColors.black,
@@ -51,9 +43,13 @@ class AppThemes {
     ),
     appBarTheme: const AppBarTheme(
       elevation: 0,
+      scrolledUnderElevation: 0,
       centerTitle: true,
       color: AppColors.white,
-      systemOverlayStyle: SystemUiOverlayStyle.light,
+      systemOverlayStyle: SystemUiOverlayStyle(
+        statusBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.light,
+      ),
       titleTextStyle: TextStyle(
         color: AppColors.black,
         fontSize: AppStyles.kCommonXXLarge,
@@ -74,7 +70,6 @@ class AppThemes {
     cardColor: AppColors.lightBlack,
     dividerColor: AppColors.lightBlack,
     scaffoldBackgroundColor: AppColors.mediumBlack,
-    androidOverscrollIndicator: AndroidOverscrollIndicator.stretch,
     textTheme: const TextTheme(
       headline1: TextStyle(
         color: AppColors.white,
@@ -102,9 +97,13 @@ class AppThemes {
     ),
     appBarTheme: const AppBarTheme(
       elevation: 0,
+      scrolledUnderElevation: 0,
       centerTitle: true,
       color: AppColors.mediumBlack,
-      systemOverlayStyle: SystemUiOverlayStyle.dark,
+      systemOverlayStyle: SystemUiOverlayStyle(
+        statusBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.dark,
+      ),
       titleTextStyle: TextStyle(
         color: AppColors.white,
         fontSize: AppStyles.kCommonXXLarge,

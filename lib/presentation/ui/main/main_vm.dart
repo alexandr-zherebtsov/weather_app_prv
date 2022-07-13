@@ -7,7 +7,6 @@ import 'package:go_router/go_router.dart';
 import 'package:weather_app_prv/data/sources/local/preference_manager.dart';
 import 'package:weather_app_prv/domain/models/location_model.dart';
 import 'package:weather_app_prv/domain/responses/weather_response.dart';
-import 'package:weather_app_prv/presentation/di/locator.dart';
 import 'package:weather_app_prv/presentation/router/routes.dart';
 import 'package:weather_app_prv/shared/constants/app_string_keys.dart';
 import 'package:weather_app_prv/shared/constants/app_values.dart';
@@ -15,7 +14,9 @@ import 'package:weather_app_prv/shared/core/base/base_view_model.dart';
 import 'package:weather_app_prv/shared/styles/widgets.dart';
 
 class MainViewModel extends BaseViewModel {
-  final PreferenceManager _pref = locator<PreferenceManager>();
+  final PreferenceManager _pref;
+  MainViewModel(this._pref);
+
   late List<PopUpModel> popUpItems;
 
   WeatherResponse? weather;
@@ -42,7 +43,7 @@ class MainViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  Future<void> onInit() async {
+  Future<void> init() async {
     setBusy(true);
     widgetInitializer();
     try {
@@ -85,7 +86,7 @@ class MainViewModel extends BaseViewModel {
   void hourlyWeather() => viewIndex = 0;
   void weatherByDay() => viewIndex = 1;
 
-  void navToAboutAs(BuildContext context) => context.push(AppRoutes.aboutAs);
+  void toAboutAs(BuildContext context) => context.push(AppRoutes.aboutAs);
 
   Future<void> refreshScreen(BuildContext context) async => context.go(AppRoutes.splash);
 

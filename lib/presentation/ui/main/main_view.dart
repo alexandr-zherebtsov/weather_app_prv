@@ -19,12 +19,16 @@ class MainView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseView<MainViewModel>(
-      init: (vm) => vm.onInit(),
+      init: (MainViewModel vm) => vm.init(),
       builder: (BuildContext context, MainViewModel vm, Widget? child) {
-        return vm.isBusy() ? getProgress() : Scaffold(
+        return vm.isBusy() ? const AppProgress() : Scaffold(
           appBar: AppBar(
             leading: Padding(
-              padding: const EdgeInsets.only(left: 12.0),
+              padding: const EdgeInsets.only(
+                top: 6.0,
+                bottom: 6.0,
+                left: 12.0,
+              ),
               child: Tooltip(
                 message: StringsKeys.aboutApp.tr(),
                 child: InkWell(
@@ -32,8 +36,8 @@ class MainView extends StatelessWidget {
                   focusColor: AppColors.transparent,
                   splashColor: AppColors.transparent,
                   highlightColor: AppColors.transparent,
-                  child: appIcon(size: 30),
-                  onTap: () => vm.navToAboutAs(context),
+                  child: const AppIcon(size: 30),
+                  onTap: () => vm.toAboutAs(context),
                 ),
               ),
             ),
@@ -48,7 +52,7 @@ class MainView extends StatelessWidget {
           ),
           body: refreshIndicatorView(
             onRefresh: () => vm.refreshScreen(context),
-            child: vm.screenError ? somethingWentWrongView(context) : Center(
+            child: vm.screenError ? const SomethingWentWrongView() : Center(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(
                   maxWidth: 760.0,

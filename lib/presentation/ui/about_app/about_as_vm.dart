@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:weather_app_prv/shared/constants/app_string_keys.dart';
 import 'package:weather_app_prv/shared/constants/app_values.dart';
 import 'package:weather_app_prv/shared/core/base/base_view_model.dart';
+import 'package:weather_app_prv/shared/utils/utils.dart';
 
 class AboutAsViewModel extends BaseViewModel {
   late PackageInfo packageInfo;
@@ -17,22 +18,38 @@ class AboutAsViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  void onInit() => getVersion();
+  void init() => getVersion();
 
   void getVersion() async {
     try {
       packageInfo = await PackageInfo.fromPlatform();
-      version = StringsKeys.version.tr() + ' ' + packageInfo.version;
+      version = '${StringsKeys.version.tr()} ${packageInfo.version}';
     } catch (e) {
       log(e.toString());
     }
   }
 
   void gitHubLaunch() async {
-    if (!await launch(AppValues.gitHubUrl)) log('Could not launch ${AppValues.gitHubUrl}');
+    try {
+      await launchUrl(
+        getUri(
+          AppValues.gitHubUrl,
+        )!,
+      );
+    } catch (e) {
+      log(e.toString());
+    }
   }
 
   void flutterLaunch() async {
-    if (!await launch(AppValues.flutterUrl)) log('Could not launch ${AppValues.flutterUrl}');
+    try {
+      await launchUrl(
+        getUri(
+          AppValues.flutterUrl,
+        )!,
+      );
+    } catch (e) {
+      log(e.toString());
+    }
   }
 }

@@ -1,4 +1,4 @@
-# Weather App (Prv)
+# Weather App (Provider)
 
 Weather Application
 
@@ -11,7 +11,9 @@ Weather Application
 
 ### Libraries & Tools
 
-- [Flutter Channel stable, 2.10.5](https://flutter.dev)
+- [Flutter 3.0.4 • channel stable](https://flutter.dev)
+- [Dart 2.17.5](https://dart.dev)
+- [DevTools 2.12.2](https://docs.flutter.dev/development/tools/devtools/overview)
 
 State Manager
 - [provider](https://github.com/rrousselGit/provider)
@@ -38,7 +40,6 @@ Location
 
 UI
 - [fluttertoast](https://github.com/PonnamKarthik/FlutterToast)
-- [cupertino_icons](https://github.com/flutter/packages/tree/master/third_party/packages/cupertino_icons)
 
 Utils
 - [url_strategy](https://github.com/simpleclub/url_strategy)
@@ -79,9 +80,9 @@ lib/
 Now, lets dive into the lib folder which has the main code for the application.
 
 ```
-1- data - Contains the data layer of project, includes directories for local, network and shared pref/cache.
-2- domain - Contains abstraction and business logic of project, includes models, responses, request, etc.
-3- presentation - Contains all the ui of project, contains sub directory for each screen.
-4- shared - Contains the utilities/common functions, styles of application.
-5- main.dart - This is the starting point of the application. All the application level configurations are defined in this file i.e, theme, routes, title, orientation etc.
+1 - data - Contains the data layer of project, includes directories for local, network and shared pref/cache.
+2 - domain - Contains abstraction and business logic of project, includes models, responses, request, etc.
+3 - presentation - Contains all the ui of project, contains sub directory for each screen.
+4 - shared - Contains the utilities/common functions, styles of application.
+5 - main.dart - This is the starting point of the application. All the application level configurations are defined in this file i.e, theme, routes, title etc.
 ```

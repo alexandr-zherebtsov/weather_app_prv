@@ -10,7 +10,7 @@ DateTime getDate(int timestamp) {
 String getDayAndMonth(int? timestamp) {
   if (timestamp != null) {
     DateTime date = getDate(timestamp);
-    return date.day.toString() + ' ' + getMonth(date);
+    return '${date.day} ${getMonth(date)}';
   } else {
     return '';
   }
@@ -22,9 +22,7 @@ String getTimeHour(int? timestamp) {
     try {
       DateTime date = getDate(timestamp);
       if (timestamp != 0) {
-        time = date.hour.toString() + ':' + (
-          date.minute.toString().length == 1 ? '0' + date.minute.toString() : date.minute.toString()
-        );
+        time = '${date.hour}:${date.minute.toString().length == 1 ? '0${date.minute}' : date.minute.toString()}';
       }
     } catch (e) {
       log(e.toString());

@@ -2,30 +2,31 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:go_router/go_router.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:weather_app_prv/data/sources/local/preference_manager.dart';
-import 'package:weather_app_prv/data/sources/remote/weather_service.dart';
+import 'package:weather_app_prv/data/sources/remote/repositories/weather_repository.dart';
 import 'package:weather_app_prv/domain/models/location_model.dart';
 import 'package:weather_app_prv/domain/requests/location_request.dart';
 import 'package:weather_app_prv/domain/requests/weather_request.dart';
 import 'package:weather_app_prv/domain/responses/location_response.dart';
 import 'package:weather_app_prv/domain/responses/weather_response.dart';
-import 'package:weather_app_prv/presentation/di/locator.dart';
-import 'package:weather_app_prv/presentation/router/routes.dart';
 import 'package:weather_app_prv/shared/constants/app_values.dart';
 import 'package:weather_app_prv/shared/core/base/base_view_model.dart';
 import 'package:weather_app_prv/shared/utils/utils.dart';
 
 class SplashViewModel extends BaseViewModel {
-  final PreferenceManager _pref = locator<PreferenceManager>();
-  final WeatherService _weatherService = locator<WeatherService>();
+  final PreferenceManager _pref;
+  final WeatherRepository _weatherRepository;
 
-  void onInit(BuildContext context) async {
+  SplashViewModel(
+    this._pref,
+    this._weatherRepository,
+  );
+
+  void init(void Function() goFunc) async {
     final ConnectivityResult conRes = await (Connectivity().checkConnectivity());
     if (conRes == ConnectivityResult.mobile || conRes == ConnectivityResult.wifi) {
       await getCurrentLocation();
@@ -33,7 +34,7 @@ class SplashViewModel extends BaseViewModel {
     } else {
       await futureDelayed(milliseconds: 400);
     }
-    navToMain(context);
+    goFunc();
   }
 
   Future<void> getCurrentLocation() async {
@@ -77,7 +78,7 @@ class SplashViewModel extends BaseViewModel {
             );
           }
         } else {
-          final LocationResponse? lct = await _weatherService.getLocation(
+          final LocationResponse? lct = await _weatherRepository.getLocation(
             LocationRequest(
               lat: latitude,
               lon: longitude,
@@ -137,7 +138,7 @@ class SplashViewModel extends BaseViewModel {
         lang: getLangCode(),
         appid: AppValues.apiKey,
       );
-      final WeatherResponse? weather = await _weatherService.getWeather(data);
+      final WeatherResponse? weather = await _weatherRepository.getWeather(data);
       if (weather != null) {
         // set last weather
         await _pref.setLastWeather(jsonEncode(weather.toJson()));
@@ -146,6 +147,4 @@ class SplashViewModel extends BaseViewModel {
       log(e.toString());
     }
   }
-
-  void navToMain(BuildContext context) => context.go(AppRoutes.main);
 }

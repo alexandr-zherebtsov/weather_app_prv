@@ -3,10 +3,14 @@ import 'dart:io';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/foundation.dart';
 import 'package:weather_app_prv/shared/constants/app_values.dart';
 import 'package:weather_app_prv/shared/constants/app_string_keys.dart';
 import 'package:weather_app_prv/shared/styles/colors.dart';
+
+bool isApple() {
+  return defaultTargetPlatform == TargetPlatform.macOS || defaultTargetPlatform == TargetPlatform.iOS;
+}
 
 void errorToast({
   required String? code,
@@ -90,6 +94,10 @@ String getLangCode() {
   } catch (e) {
     return AppValues.langCodeBasic;
   }
+}
+
+Uri? getUri(String url) {
+  return Uri.tryParse(url);
 }
 
 Future<void> futureDelayed({int milliseconds = 1000}) async {

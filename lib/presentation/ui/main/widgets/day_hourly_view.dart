@@ -51,21 +51,21 @@ Widget _buildWeatherView({
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
       Padding(
-        padding: const EdgeInsets.only(top: 42.0, left: 16.0, bottom: 12.0),
+        padding: const EdgeInsets.only(top: 42, left: 16, bottom: 12),
         child: Text(
           header,
           style: Theme.of(context).textTheme.headline3,
         ),
       ),
       kIsWeb ? Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Wrap(
           children: children,
         ),
       ) : SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Row(
             children: children,
           ),
@@ -84,11 +84,11 @@ Widget _buildWeatherItem({
 }) {
   return Container(
     clipBehavior: Clip.hardEdge,
-    margin: const EdgeInsets.all(6.0),
-    padding: const EdgeInsets.all(4.0),
+    margin: const EdgeInsets.all(6),
+    padding: const EdgeInsets.all(4),
     decoration: BoxDecoration(
       color: Theme.of(context).cardColor,
-      borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+      borderRadius: const BorderRadius.all(Radius.circular(8)),
     ),
     constraints: const BoxConstraints(
       minWidth: 110,
@@ -97,7 +97,7 @@ Widget _buildWeatherItem({
     child: Column(
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          padding: const EdgeInsets.symmetric(vertical: 8),
           child: Text(
             head,
             style: Theme.of(context).textTheme.bodyText1,
@@ -108,7 +108,7 @@ Widget _buildWeatherItem({
           temp: temp,
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 6.0),
+          padding: const EdgeInsets.symmetric(vertical: 6),
           child: buildWeatherIcon(icon),
         ),
         Text(

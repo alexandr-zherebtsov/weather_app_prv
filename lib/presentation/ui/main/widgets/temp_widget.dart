@@ -11,7 +11,7 @@ Row buildTempWidget({
     mainAxisSize: MainAxisSize.min,
     children: <Widget>[
       Padding(
-        padding: const EdgeInsets.only(top: 8.0, left: 16.0),
+        padding: const EdgeInsets.only(top: 8, left: 16),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
@@ -20,14 +20,14 @@ Row buildTempWidget({
               temp: temp,
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 8.0),
+              padding: const EdgeInsets.only(top: 8),
               child: Text(description?? ''),
             ),
           ],
         ),
       ),
       Padding(
-        padding: const EdgeInsets.only(left: 14.0),
+        padding: const EdgeInsets.only(left: 14),
         child: buildWeatherIcon(icon),
       ),
     ],

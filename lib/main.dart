@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_strategy/url_strategy.dart';
-import 'package:weather_app_prv/presentation/di/locator.dart';
+import 'package:weather_app_prv/presentation/di/di.dart';
 import 'package:weather_app_prv/presentation/router/router.dart';
 import 'package:weather_app_prv/presentation/router/routes.dart';
 import 'package:weather_app_prv/shared/constants/app_string_keys.dart';
@@ -22,7 +22,7 @@ void main() async {
       DeviceOrientation.portraitUp,
     ]);
   }
-  setupLocator();
+  setup();
   await EasyLocalization.ensureInitialized();
   runApp(
     EasyLocalization(
@@ -46,6 +46,7 @@ class App extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
       theme: AppThemes.getTheme(),
+      routeInformationProvider: AppRouter.router.routeInformationProvider,
       routeInformationParser: AppRouter.router.routeInformationParser,
       routerDelegate: AppRouter.router.routerDelegate,
     );

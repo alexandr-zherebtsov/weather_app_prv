@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:weather_app_prv/presentation/di/locator.dart';
+import 'package:weather_app_prv/presentation/di/di.dart';
 import 'package:weather_app_prv/shared/core/base/base_view_model.dart';
 
 class BaseView<T extends BaseViewModel> extends StatefulWidget {
@@ -14,11 +14,11 @@ class BaseView<T extends BaseViewModel> extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _BaseViewState<T> createState() => _BaseViewState<T>();
+  State<BaseView> createState() => _BaseViewState<T>();
 }
 
 class _BaseViewState<T extends BaseViewModel> extends State<BaseView<T>> {
-  T vm = locator<T>();
+  T vm = getIt<T>();
 
   @override
   void initState() {

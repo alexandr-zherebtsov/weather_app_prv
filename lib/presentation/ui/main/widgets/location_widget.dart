@@ -5,7 +5,7 @@ Padding buildLocationWidget({
   required String location,
 }) {
   return Padding(
-    padding: const EdgeInsets.only(top: 24.0, left: 16.0),
+    padding: const EdgeInsets.only(top: 24, left: 16),
     child: Row(
       mainAxisSize: MainAxisSize.max,
       children: <Widget>[
@@ -17,7 +17,7 @@ Padding buildLocationWidget({
           ),
         ),
         const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.0),
+          padding: EdgeInsets.symmetric(horizontal: 10),
           child: Icon(Icons.location_pin),
         ),
       ],

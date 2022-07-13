@@ -6,7 +6,7 @@ Widget buildTimeWidget({
   required int? time,
 }) {
   return Padding(
-    padding: const EdgeInsets.only(left: 16.0, top: 6.0),
+    padding: const EdgeInsets.only(left: 16, top: 6),
     child: Text(
       getDayAndMonth(time),
       softWrap: true,

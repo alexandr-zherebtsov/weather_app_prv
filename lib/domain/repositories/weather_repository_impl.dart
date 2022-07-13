@@ -1,17 +1,18 @@
 import 'dart:developer';
 
+import 'package:weather_app_prv/data/sources/remote/repositories/weather_repository.dart';
 import 'package:weather_app_prv/domain/requests/location_request.dart';
 import 'package:weather_app_prv/domain/requests/weather_request.dart';
 import 'package:weather_app_prv/domain/responses/location_response.dart';
 import 'package:weather_app_prv/domain/responses/weather_response.dart';
-import 'package:weather_app_prv/presentation/di/locator.dart';
-import 'package:weather_app_prv/shared/core/base/base_service.dart';
 import 'package:weather_app_prv/shared/core/network/dio_manager.dart';
 
-class WeatherService extends BaseService {
-  final DioManager _dio = locator<DioManager>();
+class WeatherRepositoryImpl extends WeatherRepository {
+  final DioManager _dio;
+  WeatherRepositoryImpl(this._dio);
 
-  Future<WeatherResponse?> getWeather(WeatherRequest data) async {
+  @override
+  Future<WeatherResponse?> getWeather(final WeatherRequest data) async {
     WeatherResponse? res;
     try {
       await _dio.get(
@@ -30,7 +31,8 @@ class WeatherService extends BaseService {
     return res;
   }
 
-  Future<LocationResponse?> getLocation(LocationRequest data) async {
+  @override
+  Future<LocationResponse?> getLocation(final LocationRequest data) async {
     LocationResponse? res;
     try {
       await _dio.get(

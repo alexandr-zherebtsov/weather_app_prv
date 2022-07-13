@@ -50,7 +50,7 @@ ClipRRect buildWeatherIcon(String? icon) {
     child: SizedBox(
       width: 36,
       height: 36,
-      child: buildNetworkImage(
+      child: AppNetworkImage(
         getWeatherImage(icon),
       ),
     ),
