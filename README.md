@@ -7,6 +7,8 @@ Weather Application
 1 - Android
 2 - iOS
 3 - Web
+4 - Chrome Extension
+5 - Firefox Extension
 ```
 
 ### Libraries & Tools
@@ -85,4 +87,33 @@ Now, lets dive into the lib folder which has the main code for the application.
 3 - presentation - Contains all the ui of project, contains sub directory for each screen.
 4 - shared - Contains the utilities/common functions, styles of application.
 5 - main.dart - This is the starting point of the application. All the application level configurations are defined in this file i.e, theme, routes, title etc.
+```
+
+### Web
+
+Extensions are built from the web directory. Before the build, add or replace the files from the web_resources directory. It is not possible to use the debug mode for extensions, you need to download the build to the browser.
+
+To build Web Application use files from web_resources => web_application and use command
+```
+flutter build web --web-renderer html --release
+```
+
+To build Chrome Extension use files from web_resources => chrome_extension and use command
+```
+flutter build web --web-renderer html --release --csp
+```
+
+Open Chrome and upload build to
+```
+chrome://extensions
+```
+
+To build Firefox Extension use files from web_resources => firefox_extension and use command
+```
+flutter build web --web-renderer html --release --csp
+```
+
+Open Firefox and upload build to
+```
+about:debugging#/runtime/this-firefox
 ```

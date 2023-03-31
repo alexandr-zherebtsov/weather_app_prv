@@ -16,6 +16,15 @@ class AppThemes {
     cardColor: AppColors.lightGray_1,
     dividerColor: AppColors.lightGray_2,
     scaffoldBackgroundColor: AppColors.white,
+    popupMenuTheme: const PopupMenuThemeData(
+      elevation: 4,
+      shadowColor: AppColors.black,
+      color: AppColors.white,
+      surfaceTintColor: AppColors.white,
+      textStyle:  TextStyle(
+        color: AppColors.black,
+      ),
+    ),
     textTheme: const TextTheme(
       headline1: TextStyle(
         color: AppColors.black,
@@ -70,6 +79,15 @@ class AppThemes {
     cardColor: AppColors.lightBlack,
     dividerColor: AppColors.lightBlack,
     scaffoldBackgroundColor: AppColors.mediumBlack,
+    popupMenuTheme: const PopupMenuThemeData(
+      elevation: 4,
+      shadowColor: AppColors.black,
+      color: AppColors.lightBlack,
+      surfaceTintColor: AppColors.lightBlack,
+      textStyle:  TextStyle(
+        color: AppColors.white,
+      ),
+    ),
     textTheme: const TextTheme(
       headline1: TextStyle(
         color: AppColors.white,

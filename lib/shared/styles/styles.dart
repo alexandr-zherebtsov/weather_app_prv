@@ -25,8 +25,8 @@ class AppStyles {
   static const double kCommonXXLarge = 22;
   /// Large 24
   static const double kCommonXXXLarge = 24;
-  /// Large 28
-  static const double kCommonXXXXLarge = 28;
+  /// Large 26
+  static const double kCommonXXXXLarge = 26;
   /// Large 34
   static const double kCommonXXXXXLarge = 34;
 
